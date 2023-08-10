@@ -22,21 +22,23 @@ function RegisterUser() {
 
     // Führe hier den API-Aufruf zur Registrierung durch
     try {
-     await fetch("http://localhost:5000/api/user/register", {
+    const response = await fetch("http://localhost:4000/api/user/register",  {
         method: "POST",
-        credentials: "same-origin", //include
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
+        // credentials: "same-origin", //include
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(user),
+        
       });
+     console.log (response)
 
-      // if (response.status === 201) {
-      //   // Erfolgreich registriert, weiterleiten oder andere Aktionen durchführen
-      //   navigate("/"); // Passe die Zielroute an
-      // } else {
-      //   console.error("Registrierung fehlgeschlagen");
-      // }
+      if (response.status === 201) {
+        // Erfolgreich registriert, weiterleiten oder andere Aktionen durchführen
+        navigate("/"); // Passe die Zielroute an
+      } else {
+        console.error("Registrierung fehlgeschlagen");
+      }
     } catch (error) {
       console.error("Fehler bei der Registrierung:", error);
     }
