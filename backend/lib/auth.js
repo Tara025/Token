@@ -9,7 +9,9 @@ const verify = promisify(jwt.verify);
 const secret = process.env.JWT_SECRET
 
 export const createToken = async (payload, option = null)  => {
+
     const token = await sign(payload, secret, option);
+    console.log(token)
     return token; 
 }
 
