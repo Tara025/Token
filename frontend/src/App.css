@@ -18,6 +18,44 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Füge dieses CSS in eine separate Datei z.B. dashboard.css ein und importiere sie in deiner Komponente */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.auth-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 // import axios from "axios";
 
 function RegisterUser() {
@@ -10,6 +11,8 @@ function RegisterUser() {
     email: "",
     password: "",
   });
+
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const changeUserHandler = (key, value) => {
     setUser((prevState) => ({
@@ -36,7 +39,10 @@ function RegisterUser() {
 
       if (response.status === 201) {
         // Erfolgreich registriert, weiterleiten oder andere Aktionen durchführen
-        navigate("/"); // Passe die Zielroute an
+        setRegistrationSuccess(true); // Setze den Zustand auf erfolgreich
+        setTimeout(() => {
+        navigate("/register"); // Passe die Zielroute an
+      }, 3000);
       } else {
         console.error("Registrierung fehlgeschlagen");
       }
@@ -46,7 +52,7 @@ function RegisterUser() {
   };
 
   return (
-    <>
+    <div className="dashboard-container">
       <form>
         <label>name</label>
         <input
@@ -75,9 +81,16 @@ function RegisterUser() {
             changeUserHandler("password", event.target.value)
           }
         />
-        <button onClick={(event) => submitHandler(event)}>Register</button>
+        <button className="auth-button" onClick={(event) => submitHandler(event)}>Register</button>
       </form>
-    </>
+      {registrationSuccess && (
+        <p>Registrierung erfolgreich! <br />Gehe jetzt zum Login!</p>
+        )}
+        <Link to="/login" className="auth-button">
+        Login
+        </Link>
+         
+    </div>
   );
 }
 
