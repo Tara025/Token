@@ -7,7 +7,7 @@ function RegisterUser() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
-    customerId: "",
+    // customerId: "",
     email: "",
     password: "",
   });
@@ -28,7 +28,7 @@ function RegisterUser() {
     try {
     const response = await fetch("http://localhost:4000/api/user/register",  {
         method: "POST",
-        // credentials: "same-origin", //include
+        credentials: "same-origin", //include
         headers: {
           "Content-Type": "application/json",
         },
@@ -83,6 +83,7 @@ function RegisterUser() {
         />
         <button className="auth-button" onClick={(event) => submitHandler(event)}>Register</button>
       </form>
+    {/* hier muss noch nachgebessert werden!!! */}
       {registrationSuccess && (
         <p>Registrierung erfolgreich! <br />Gehe jetzt zum Login!</p>
         )}

@@ -6,7 +6,7 @@ function LoginUser() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
-    customerId: "",
+    // customerId: "",
     email: "",
     password: "",
   });
