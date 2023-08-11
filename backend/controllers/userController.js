@@ -1,15 +1,22 @@
 import userModel from "../model/userModel.js";
 import bcrypt from "bcrypt";
 import { createToken } from "../lib/auth.js";
+import { v4 as uuid } from 'uuid';
 
 export async function createUserController(req, res) {
   try {
     const saltRound = 12;
     const salt = await bcrypt.genSalt(saltRound);
     const hashedSaltedPassword = await bcrypt.hash(req.body.password, salt);
+    const customerId = uuid();
+
     req.body.password = hashedSaltedPassword;
 
-    const newUser = userModel(req.body);
+    const newUser = userModel({
+      ...req.body,
+    password: hashedSaltedPassword,
+    customerId: customerId,});
+    
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (error) {
