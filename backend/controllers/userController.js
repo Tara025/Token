@@ -18,6 +18,26 @@ export async function createUserController(req, res) {
 }
 
 export async function loginUserController(req, res) {
+
+//   try {
+//     const user = await userModel.findOne({ email: req.body.email })
+//     console.log(user)
+
+//     if (user) {
+//         const isMatching = await bcrypt.compare(req.body.password, user.password)
+//         if (isMatching) {
+//             const token = await createToken({customerId: user.customerId, userId:user._id},{expiresIn: "1h"});
+//             console.log({token});
+//             return res.status(200).cookie("jwt", token, {httpOnly:true}).json({message:"Login successful!"});
+//         }
+//         return res.status(401).json({message:"Access denied! Invalid credentials."})
+//     }
+//     return res.status(404).json({message:"User not found!"});
+
+// } catch (err) {
+//     res.status(500).json(err)
+// }
+  
   try {
     const user = await userModel.findOne({ email: req.body.email });
     console.log({ user });
@@ -29,7 +49,7 @@ export async function loginUserController(req, res) {
         const token = await createToken({
           customerId: user.customerId,
           userId: user._id},
-          {expiresIn: "1h"}
+          // {expiresIn: "1h"}
         );
  // option (Token Gültigkeit 1 Stunde)
         return res

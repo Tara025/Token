@@ -8,13 +8,17 @@ import cookieParser from "cookie-parser";
 
 
 const app = express();
-app.use(cookieParser());
-app.use(express.json());
-app.use(cors());
-
 
 const port = process.env.PORT || 5050;
 const connectionString = process.env.MONGO_URL;
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(cors());
+
+
+
 
 
 app.use("/api", userRouter);

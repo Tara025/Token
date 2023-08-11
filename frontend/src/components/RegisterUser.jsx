@@ -6,6 +6,7 @@ function RegisterUser() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
+    customerId: "",
     email: "",
     password: "",
   });
@@ -54,6 +55,13 @@ function RegisterUser() {
             changeUserHandler("name", event.target.value)
           }
         />
+           <label>customerId</label>
+          <input
+            value={user.customerId}
+            onChange={(event) =>
+              changeUserHandler("customerId", event.target.value)
+            }
+          />
         <label>Email</label>
         <input
           value={user.email}

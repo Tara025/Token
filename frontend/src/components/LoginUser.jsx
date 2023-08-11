@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 function LoginUser() {
     const navigate = useNavigate();
     const [user, setUser] = useState({
-      username: "",
+      name: "",
+      customerId: "",
       email: "",
       password: "",
     });
@@ -22,7 +23,7 @@ function LoginUser() {
   
       // Führe hier den API-Aufruf zum Login durch
       try {
-        const response = await fetch("http://localhost:5000/api/user/login", {
+        const response = await fetch("http://localhost:4000/api/user/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,7 +33,7 @@ function LoginUser() {
   
         if (response.status === 200) {
           // Erfolgreich eingeloggt, weiterleiten oder andere Aktionen durchführen
-          navigate("/"); // Passe die Zielroute an
+          navigate("/login"); // Passe die Zielroute an
         } else {
           console.error("Login fehlgeschlagen");
         }
@@ -46,9 +47,16 @@ function LoginUser() {
         <form>
           <label>Username</label>
           <input
-            value={user.username}
+            value={user.name}
             onChange={(event) =>
-              changeUserHandler("username", event.target.value)
+              changeUserHandler("name", event.target.value)
+            }
+          />
+           <label>customerId</label>
+          <input
+            value={user.customerId}
+            onChange={(event) =>
+              changeUserHandler("customerId", event.target.value)
             }
           />
           <label>Email</label>
