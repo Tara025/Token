@@ -15,8 +15,8 @@ const secret = process.env.JWT_SECRET
 //     return token; 
 // }
 
-export const createToken = async (payload, option = null) => {
-    const token = await sign(payload, secret, option)
+export const createToken = async (payload) => {
+    const token = await sign(payload, secret, {expiresIn: "1h", algorithm: "HS512"})
     return token
 }
 
