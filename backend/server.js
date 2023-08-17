@@ -19,9 +19,6 @@ app.use(cors());
 
 
 app.use("/", express.static("./frontend"));
-
-
-
 app.use("/api", userRouter);
 
 (async () => {

@@ -26,7 +26,7 @@ function RegisterUser() {
 
     // Führe hier den API-Aufruf zur Registrierung durch
     try {
-    const response = await fetch("http://localhost:4000/api/user/register",  {
+    const response = await fetch("/api/user/register",  {
         method: "POST",
         credentials: "same-origin", //include
         headers: {

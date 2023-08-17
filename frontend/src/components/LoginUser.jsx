@@ -36,9 +36,8 @@ function LoginUser() {
       if (response.status === 200) {
         // Erfolgreich eingeloggt, weiterleiten oder andere Aktionen durchführen
         setLoginSuccess(true); // Setze den Zustand auf erfolgreich
-        setTimeout(() => {
-          navigate("/login"); // Passe die Zielroute an
-        }, 3000);
+         navigate("/login"); // Passe die Zielroute an
+     
       } else {
         console.error("Login fehlgeschlagen");
       }
