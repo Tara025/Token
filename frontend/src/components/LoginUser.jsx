@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function LoginUser() {
   const navigate = useNavigate();
@@ -71,6 +71,9 @@ function LoginUser() {
         <button className="auth-button" onClick={(event) => submitHandler(event)}>Login</button>
       </form>
       {loginSuccess && <p>Login erfolgreich!</p>}
+      <Link to="/getUsers" className="auth-button">
+          AllUsers
+        </Link>
     </div>
   );
 }
