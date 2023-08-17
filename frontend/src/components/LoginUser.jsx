@@ -36,7 +36,7 @@ function LoginUser() {
       if (response.status === 200) {
         // Erfolgreich eingeloggt, weiterleiten oder andere Aktionen durchführen
         setLoginSuccess(true); // Setze den Zustand auf erfolgreich
-         navigate("/login"); // Passe die Zielroute an
+         navigate("/getUsers"); // Passe die Zielroute an
      
       } else {
         console.error("Login fehlgeschlagen");
@@ -71,9 +71,9 @@ function LoginUser() {
         <button className="auth-button" onClick={(event) => submitHandler(event)}>Login</button>
       </form>
       {loginSuccess && <p>Login erfolgreich!</p>}
-      <Link to="/getUsers" className="auth-button">
+      {/* <Link to="/getUsers" className="auth-button">
           AllUsers
-        </Link>
+        </Link> */}
     </div>
   );
 }
