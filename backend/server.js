@@ -18,6 +18,7 @@ app.use(cookieParser());
 app.use(cors());
 
 
+app.use("/", express.static("./frontend"));
 
 
 
@@ -35,3 +36,5 @@ app.use("/api", userRouter);
       console.log(error);
    }
 })();
+
+app.get("/*", (req,res)=> res.sendFile("/frontend/index.html", {root: process.env.PWD}));
