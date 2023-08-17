@@ -13,13 +13,13 @@ const port = process.env.PORT || 5050;
 const connectionString = process.env.MONGO_URL;
 
 app.use(express.json());
+
 app.use(cookieParser());
 
 app.use(cors());
 
-
-app.use("/", express.static("./frontend"));
 app.use("/api", userRouter);
+
 
 (async () => {
    try {
@@ -34,4 +34,6 @@ app.use("/api", userRouter);
    }
 })();
 
+
+app.use("/", express.static("./frontend"));
 app.get("/*", (req,res)=> res.sendFile("/frontend/index.html", {root: process.env.PWD}));
